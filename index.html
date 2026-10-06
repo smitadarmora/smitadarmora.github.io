@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smita Darmora</title>
+<meta name="description" content="Smita Darmora, Computational Scientist at the University of Illinois Chicago. HPC, GPU benchmarking and research computing, with a background in particle physics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<!-- Put your photo next to this file as photo.jpg (square works best). -->
+<style>
+:root{
+  --bg:#EEF2F8;
+  --card:#FFFFFF;
+  --ink:#15233B;
+  --muted:#56657C;
+  --rule:#DFE5EE;
+  --link:#0B6E7C;
+  --night:#101C30;
+  --night2:#1B2D4A;
+  --yellow:#E8A800; --yellow-t:#FFF6DB;
+  --cyan:#0096B7;   --cyan-t:#E1F5FA;
+  --red:#D9482B;    --red-t:#FCE9E4;
+  --green:#2E9E5B;  --green-t:#E3F5EA;
+  --violet:#6B54E0; --violet-t:#EEEAFD;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0B1422; --card:#142236; --ink:#E6ECF4; --muted:#9AA8BC; --rule:#26374F; --link:#5CC6D6;
+    --yellow-t:#3A3112; --cyan-t:#0F3340; --red-t:#3D1F18; --green-t:#13321F; --violet-t:#251F48;
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:1.0625rem;line-height:1.6}
+a{color:var(--link);text-underline-offset:.18em;text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.25rem}
+h1,h2,h3{font-family:"IBM Plex Sans Condensed","IBM Plex Sans",sans-serif;font-weight:700;line-height:1.15}
+
+/* ---------- Hero: night-sky event display ---------- */
+.hero{background:radial-gradient(circle at 78% 45%, var(--night2) 0%, var(--night) 60%);color:#EAF0F8}
+.hero .wrap{display:grid;grid-template-columns:1.15fr 1fr;gap:2.5rem;align-items:center;padding-top:4rem;padding-bottom:4rem}
+.name{font-size:clamp(2.6rem,6vw,4.4rem);margin:0 0 .9rem;letter-spacing:-.01em}
+.role{font-size:1.25rem;font-weight:600;margin:0;color:#FFFFFF}
+.place{color:#A9B8CD;margin:.2rem 0 1.25rem}
+.focus{max-width:34rem;margin:0 0 1.75rem;color:#D5DEEA}
+.links{display:flex;flex-wrap:wrap;gap:.55rem;padding:0;margin:0;list-style:none}
+.links a{display:inline-flex;align-items:center;gap:.45rem;padding:.42rem .9rem;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#FFFFFF;text-decoration:none;font-size:.95rem}
+.links a::before{content:"";width:.55rem;height:.55rem;border-radius:50%;background:var(--c)}
+.links a:hover{background:rgba(255,255,255,.16);border-color:var(--c)}
+
+.event{position:relative;width:100%;max-width:440px;justify-self:center;aspect-ratio:1}
+.event svg{width:100%;height:100%;display:block}
+.event .ring{fill:none;stroke:rgba(255,255,255,.14);stroke-width:1}
+.event .trk{fill:none;stroke-width:2.6;stroke-linecap:round}
+.portrait{position:absolute;left:50%;top:50%;width:38%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;overflow:hidden;border:4px solid #FFFFFF;background:var(--night2);display:grid;place-items:center;box-shadow:0 0 0 8px rgba(0,150,183,.25)}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.portrait .initials{font-family:"IBM Plex Sans Condensed",sans-serif;font-weight:700;font-size:2.4rem;color:#A9B8CD;display:none}
+.portrait.noimg img{display:none}
+.portrait.noimg .initials{display:block}
+@media (prefers-reduced-motion: no-preference){
+  .event .trk{stroke-dasharray:420;stroke-dashoffset:420;animation:draw 1.1s cubic-bezier(.3,.6,.2,1) forwards;animation-delay:calc(var(--i) * 70ms + 150ms)}
+  .event .hit{opacity:0;animation:pop .3s ease-out forwards;animation-delay:calc(var(--i) * 70ms + 1000ms)}
+}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes pop{to{opacity:1}}
+
+/* ---------- Boxed sections ---------- */
+main{padding:2.5rem 0 1rem}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
+.box{background:var(--card);border-radius:14px;border:1px solid var(--rule);border-top:6px solid var(--c);padding:1.5rem 1.6rem 1.6rem}
+.box.full{grid-column:1 / -1}
+.box > h2{display:flex;align-items:center;gap:.6rem;font-size:1.5rem;margin:0 0 1rem}
+.box > h2::before{content:"";width:.8rem;height:.8rem;border-radius:50%;background:var(--c);flex:none}
+.box p{margin:0 0 .9rem}
+.box p:last-child{margin-bottom:0}
+
+/* Current work tiles */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.tile{background:var(--t);border-radius:10px;padding:1.1rem 1.2rem;border-left:4px solid var(--c)}
+.tile h3{font-size:1.15rem;margin:0 0 .35rem}
+.tile p{margin:0;color:var(--muted)}
+
+/* Talks */
+.talks{list-style:none;margin:0;padding:0;display:grid;gap:.75rem}
+.talks li{display:grid;grid-template-columns:6.5rem 1fr;gap:1rem;align-items:start;padding:.9rem 1rem;border-radius:10px;background:var(--t);border-left:4px solid var(--c)}
+.when{font-weight:600;font-variant-numeric:tabular-nums}
+.tag{display:inline-block;margin-top:.3rem;padding:.05rem .55rem;border-radius:999px;background:var(--c);color:#FFFFFF;font-size:.8rem;font-weight:600}
+.talks strong{font-weight:600;display:block}
+.talks .m{color:var(--muted);font-size:.95rem}
+.legend{display:flex;flex-wrap:wrap;gap:.5rem 1rem;margin:0 0 1rem;padding:0;list-style:none;font-size:.9rem;color:var(--muted)}
+.legend li::before{content:"";display:inline-block;width:.6rem;height:.6rem;border-radius:50%;background:var(--c);margin-right:.4rem}
+
+/* Service */
+.chips{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+.chips li{padding:.55rem .8rem;border-radius:8px;background:var(--t)}
+
+/* Publications */
+.pubs{margin:0;padding:0;list-style:none;display:grid;gap:.75rem}
+.pubs li{padding:.9rem 1rem;border-radius:10px;border:1px solid var(--rule)}
+.pubs .t{font-weight:600}
+.pubs .m{color:var(--muted);font-size:.95rem}
+.more{margin-top:1rem}
+
+/* Background timeline */
+.tl{list-style:none;margin:0;padding:0 0 0 1.25rem;border-left:3px solid var(--rule)}
+.tl li{position:relative;padding:0 0 1rem}
+.tl li:last-child{padding-bottom:0}
+.tl li::before{content:"";position:absolute;left:calc(-1.25rem - 8px);top:.45rem;width:13px;height:13px;border-radius:50%;background:var(--card);border:3px solid var(--c)}
+.tl .when{display:block;font-size:.9rem;color:var(--muted)}
+.tl strong{font-weight:600}
+.tl span.m{display:block;color:var(--muted);font-size:.95rem}
+
+footer{padding:1.5rem 0 3rem;color:var(--muted);font-size:.9rem;text-align:center}
+
+/* Colors per kind */
+.k-poster{--c:var(--cyan);--t:var(--cyan-t)}
+.k-talk{--c:var(--yellow);--t:var(--yellow-t)}
+.k-bof{--c:var(--violet);--t:var(--violet-t)}
+.k-paper{--c:var(--green);--t:var(--green-t)}
+.k-red{--c:var(--red);--t:var(--red-t)}
+
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:1fr;padding-top:2.5rem}
+  .event{max-width:300px;order:-1}
+  .grid,.tiles{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .talks li{grid-template-columns:1fr;gap:.2rem}
+  .box{padding:1.2rem}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <h1 class="name">Smita Darmora</h1>
+      <p class="role">Computational Scientist</p>
+      <p class="place">Advanced Cyberinfrastructure for Education and Research (ACER), University of Illinois Chicago</p>
+      <p class="focus">I work where science meets research computing: benchmarking GPUs for high-energy physics, helping researchers get real work done on HPC systems, and studying what users actually need from them. Before this I was a particle physicist on the ATLAS experiment at CERN.</p>
+      <ul class="links">
+        <li><a id="mail" href="#" style="--c:var(--red)">Email</a></li>
+        <li><a href="https://github.com/smitadarmora" style="--c:var(--violet)">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/smita-darmora-21231622b/" style="--c:var(--cyan)">LinkedIn</a></li>
+        <li><a href="https://scholar.google.com/citations?user=9yQTKVAAAAAJ" style="--c:var(--yellow)">Google Scholar</a></li>
+        <li><a href="https://orcid.org/0000-0002-9766-3657" style="--c:var(--green)">ORCID</a></li>
+        <li><a href="https://www.researchgate.net/profile/Smita-Darmora" style="--c:var(--cyan)">ResearchGate</a></li>
+      </ul>
+    </div>
+
+    <div class="event" aria-hidden="true">
+      <svg viewBox="0 0 400 400">
+        <circle class="ring" cx="200" cy="200" r="100"/>
+        <circle class="ring" cx="200" cy="200" r="135"/>
+        <circle class="ring" cx="200" cy="200" r="165"/>
+        <circle class="ring" cx="200" cy="200" r="192"/>
+        <path class="trk" style="--i:0;stroke:var(--yellow)" d="M200 200 Q262 150 318 72"/>
+        <path class="trk" style="--i:1;stroke:var(--cyan)" d="M200 200 Q142 122 126 22"/>
+        <path class="trk" style="--i:2;stroke:var(--red)" d="M200 200 Q300 228 386 252"/>
+        <path class="trk" style="--i:3;stroke:var(--green)" d="M200 200 Q112 258 34 296"/>
+        <path class="trk" style="--i:4;stroke:var(--violet)" d="M200 200 Q232 300 214 390"/>
+        <path class="trk" style="--i:5;stroke:var(--cyan)" d="M200 200 Q92 182 12 166"/>
+        <path class="trk" style="--i:6;stroke:var(--yellow)" d="M200 200 Q282 298 326 358"/>
+        <path class="trk" style="--i:7;stroke:var(--red)" d="M200 200 Q170 92 208 10"/>
+        <path class="trk" style="--i:8;stroke:var(--green)" d="M200 200 Q322 172 390 150"/>
+        <path class="trk" style="--i:9;stroke:var(--violet)" d="M200 200 Q122 330 92 374"/>
+        <circle class="hit" style="--i:0;fill:var(--yellow)" cx="318" cy="72" r="5"/>
+        <circle class="hit" style="--i:2;fill:var(--red)" cx="386" cy="252" r="5"/>
+        <circle class="hit" style="--i:3;fill:var(--green)" cx="34" cy="296" r="5"/>
+        <circle class="hit" style="--i:6;fill:var(--yellow)" cx="326" cy="358" r="5"/>
+        <circle class="hit" style="--i:7;fill:var(--red)" cx="208" cy="10" r="5"/>
+      </svg>
+      <div class="portrait">
+        <img src="photo.jpg" alt="Smita Darmora" onerror="this.parentNode.classList.add('noimg')">
+        <span class="initials">SD</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="grid">
+
+    <section class="box full" style="--c:var(--cyan)">
+      <h2>About</h2>
+      <p>At ACER I support researchers on UIC's Lakeshore HPC cluster and work on how people learn to use these systems well. I also work with the HEPiX Benchmarking Working Group on HEPScore4GPU, a GPU benchmark built from real high-energy physics applications.</p>
+      <p>I came to research computing from physics. My PhD and postdoctoral work were on the ATLAS experiment: searches for supersymmetry using multivariate and machine-learning methods, calibration of the Tile Calorimeter, and operating distributed computing on the Worldwide LHC Computing Grid. I've held positions at Argonne National Laboratory, Fermilab and UT Arlington, and I've taught undergraduate physics.</p>
+    </section>
+
+    <section class="box full" style="--c:var(--green)">
+      <h2>Current work</h2>
+      <div class="tiles">
+        <div class="tile k-poster">
+          <h3>GPU benchmarking for high-energy physics</h3>
+          <p>Measuring how real HEP applications (event generation, full detector simulation, AI-based simulation) scale across GPUs and how much power they draw, as input to HEPScore4GPU and to the application developers.</p>
+        </div>
+        <div class="tile k-talk">
+          <h3>HPC system literacy and user support</h3>
+          <p>Studying what researchers need to move from submitting jobs to understanding the systems they run on, and how support teams can scale that help.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="box full" style="--c:var(--yellow)">
+      <h2>Talks and sessions</h2>
+      <ul class="legend">
+        <li class="k-poster">Poster</li>
+        <li class="k-talk">Talk</li>
+        <li class="k-bof">Birds of a Feather</li>
+        <li class="k-paper">Paper</li>
+      </ul>
+      <ul class="talks">
+        <li class="k-poster"><div><span class="when">Nov 2026</span><br><span class="tag">Poster</span></div>
+          <div><strong>Toward HEPScore4GPU: Scaling and Power of Real HEP GPU Applications on the A100 and H100</strong><span class="m">SC26, Chicago. With Michael E. Papka, on behalf of the HEPiX Benchmarking Working Group.</span></div></li>
+        <li class="k-talk"><div><span class="when">Nov 2026</span><br><span class="tag">Talk</span></div>
+          <div><strong>Beyond Job Submission: Developing System Literacy through Productive Struggle</strong><span class="m">Lightning talk, BPHTE26 workshop at SC26. With Jeffrey Weekley.</span></div></li>
+        <li class="k-bof"><div><span class="when">Nov 2026</span><br><span class="tag">BoF</span></div>
+          <div><strong>HPC User Support in the AI and Exascale Era</strong><span class="m">SC26, co-chair with Ilya Zhukov (Jülich Supercomputing Centre).</span></div></li>
+        <li class="k-paper"><div><span class="when">Aug 2026</span><br><span class="tag">Paper</span></div>
+          <div><strong>Reproducibility in Scientific Workflows with Artificial Intelligence: Challenges and a Path Forward</strong><span class="m">Position paper, Harnessing the Data Revolution (HDR) Ecosystem Conference 2026, University of Illinois Chicago.</span></div></li>
+        <li class="k-bof"><div><span class="when">Jul 2026</span><br><span class="tag">BoF</span></div>
+          <div><strong>HPC system literacy</strong><span class="m">Organizer, PEARC26, Minneapolis.</span></div></li>
+        <li class="k-talk"><div><span class="when">May 2026</span><br><span class="tag">Talk</span></div>
+          <div><strong>From Physics to Research Computing: An Early-Career Perspective on Entering RCD</strong><span class="m">Midwest Research Computing and Data Consortium Annual Meeting 2026.</span></div></li>
+        <li class="k-talk"><div><span class="when">Mar 2026</span><br><span class="tag">Talk</span></div>
+          <div><strong>What HPC Users Really Need</strong><span class="m">High Performance Software Foundation (HPSF) Conference 2026, Chicago.</span></div></li>
+        <li class="k-poster"><div><span class="when">2025</span><br><span class="tag">Poster</span></div>
+          <div><strong>From Logs to Lessons: Understanding System Failures on Cray XC40 Supercomputer</strong><span class="m">12th Greater Chicago Area Systems Research Workshop (GCASR).</span></div></li>
+      </ul>
+    </section>
+
+    <section class="box" style="--c:var(--violet)">
+      <h2>Service</h2>
+      <ul class="chips">
+        <li class="k-bof">Outreach, board of Chicago Women in High Performance Computing (Chicago WHPC)</li>
+        <li class="k-poster">SCinet team member, SC26</li>
+        <li class="k-poster">SCinet student volunteer, SC25</li>
+        <li class="k-talk">Student Cluster Competition judge, ISC High Performance 2026, Hamburg</li>
+        <li class="k-talk">Poster judge, PEARC26</li>
+        <li class="k-paper">Review panel, NAIRR Pilot</li>
+        <li class="k-paper">Reviewer and guest editor, <em>Universe</em> and <em>Data</em> (MDPI)</li>
+        <li class="k-paper">Reviewer, DOE Visiting Faculty Program at Argonne</li>
+        <li class="k-red">Young Scientists Symposium Series Committee, HEP Division, Argonne</li>
+      </ul>
+    </section>
+
+    <section class="box" style="--c:var(--red)">
+      <h2>Background</h2>
+      <ul class="tl">
+        <li style="--c:var(--cyan)"><span class="when">Now</span><strong>Computational Scientist, ACER</strong><span class="m">University of Illinois Chicago</span></li>
+        <li style="--c:var(--green)"><span class="when">2025</span><strong>HPC Research Aide</strong><span class="m">Argonne National Laboratory</span></li>
+        <li style="--c:var(--yellow)"><span class="when">2023</span><strong>Scientific Computing Specialist</strong><span class="m">Fermi National Accelerator Laboratory</span></li>
+        <li style="--c:var(--violet)"><span class="when">2019–2022</span><strong>Postdoctoral Appointee, High Energy Physics Division</strong><span class="m">Argonne National Laboratory</span></li>
+        <li style="--c:var(--red)"><span class="when">2016–2019</span><strong>Postdoctoral Fellow and Adjunct Assistant Professor, Physics</strong><span class="m">UT Arlington. Also taught physics at College of DuPage.</span></li>
+        <li style="--c:var(--cyan)"><span class="when">Education</span><strong>PhD, High Energy Physics</strong><span class="m">UT Arlington (ATLAS experiment, CERN). MS in Physics, UT Arlington. MS in Computer Science (HPC) in progress, UIC.</span></li>
+      </ul>
+    </section>
+
+    <section class="box full" style="--c:var(--cyan)">
+      <h2>Selected publications</h2>
+      <ul class="pubs">
+        <li><div class="t">Model-Independent Searches for New Physics in Multi-Body Invariant Masses</div>
+          <div class="m">S. Chekanov, S. Darmora, W. Islam, C. E. M. Wagner, J. Zhang. <em>Universe</em> 7 (2021) 333. <a href="https://doi.org/10.3390/universe7090333">doi:10.3390/universe7090333</a></div></li>
+        <li><div class="t">Operation and performance of the ATLAS Tile Calorimeter in Run 1</div>
+          <div class="m">ATLAS Collaboration. <em>Eur. Phys. J. C</em> 78 (2018) 987. <a href="https://doi.org/10.1140/epjc/s10052-018-6374-z">doi:10.1140/epjc/s10052-018-6374-z</a></div></li>
+        <li><div class="t">Search for direct top squark pair production in final states with two leptons in √s = 13 TeV pp collisions with the ATLAS detector</div>
+          <div class="m">ATLAS Collaboration. <em>Eur. Phys. J. C</em> 77 (2017) 898. <a href="https://doi.org/10.1140/epjc/s10052-017-5445-x">doi:10.1140/epjc/s10052-017-5445-x</a></div></li>
+        <li><div class="t">The Laser calibration of the ATLAS Tile Calorimeter during the LHC run 1</div>
+          <div class="m">ATLAS Collaboration. <em>JINST</em> 11 (2016) T10005. <a href="https://doi.org/10.1088/1748-0221/11/10/T10005">doi:10.1088/1748-0221/11/10/T10005</a></div></li>
+        <li><div class="t">Search for direct top-squark pair production in final states with two leptons in pp collisions at √s = 8 TeV with the ATLAS detector</div>
+          <div class="m">ATLAS Collaboration. <em>JHEP</em> 06 (2014) 124. <a href="https://doi.org/10.1007/JHEP06(2014)124">doi:10.1007/JHEP06(2014)124</a></div></li>
+      </ul>
+      <p class="more"><a href="https://scholar.google.com/citations?user=9yQTKVAAAAAJ">Full list on Google Scholar</a></p>
+    </section>
+
+  </div>
+</main>
+
+<footer>© 2026 Smita Darmora</footer>
+
+<script>
+  // Email is assembled here so it isn't plain text in the page source.
+  (function(){
+    var u = "sdarm", d = "uic" + "." + "edu";
+    var a = document.getElementById("mail");
+    if (a) a.href = "mailto:" + u + "@" + d;
+  })();
+</script>
+</body>
+</html>
